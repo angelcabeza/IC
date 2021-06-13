@@ -1,0 +1,201 @@
+Prefix(:=<http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2>
+
+Declaration(Class(:Alumnos))
+Declaration(Class(:AlumnosAsig))
+Declaration(Class(:Asignaturas))
+Declaration(Class(:CursoAsig))
+Declaration(Class(:Cursos))
+Declaration(Class(:ProfAsig))
+Declaration(Class(:Profesores))
+Declaration(ObjectProperty(:Alumnos.P))
+Declaration(ObjectProperty(:Curso.P))
+Declaration(ObjectProperty(:P.Alumnos))
+Declaration(ObjectProperty(:P.Curso))
+Declaration(ObjectProperty(:P.Profesor))
+Declaration(ObjectProperty(:Profesor.P))
+Declaration(DataProperty(:Correo))
+Declaration(DataProperty(:DNI))
+Declaration(DataProperty(:Nombre))
+Declaration(DataProperty(:Referencia))
+Declaration(DataProperty(<http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#1_Cuatri>))
+Declaration(DataProperty(<http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#2_Cuatri>))
+Declaration(NamedIndividual(:Alum1))
+Declaration(NamedIndividual(:Alum2))
+Declaration(NamedIndividual(:Asig1))
+Declaration(NamedIndividual(:Asig2))
+Declaration(NamedIndividual(:Curso1))
+Declaration(NamedIndividual(:Curso2))
+Declaration(NamedIndividual(:Prof1))
+Declaration(NamedIndividual(:Prof2))
+############################
+#   Object Properties
+############################
+
+# Object Property: :Alumnos.P (:Alumnos.P)
+
+InverseObjectProperties(:Alumnos.P :P.Alumnos)
+ObjectPropertyDomain(:Alumnos.P :Alumnos)
+ObjectPropertyRange(:Alumnos.P :Asignaturas)
+
+# Object Property: :Curso.P (:Curso.P)
+
+InverseObjectProperties(:Curso.P :P.Curso)
+ObjectPropertyDomain(:Curso.P :Cursos)
+ObjectPropertyRange(:Curso.P :Asignaturas)
+
+# Object Property: :P.Alumnos (:P.Alumnos)
+
+ObjectPropertyDomain(:P.Alumnos :Asignaturas)
+ObjectPropertyRange(:P.Alumnos :Alumnos)
+
+# Object Property: :P.Curso (:P.Curso)
+
+ObjectPropertyDomain(:P.Curso :Asignaturas)
+ObjectPropertyRange(:P.Curso :Cursos)
+
+# Object Property: :P.Profesor (:P.Profesor)
+
+InverseObjectProperties(:P.Profesor :Profesor.P)
+ObjectPropertyDomain(:P.Profesor :Asignaturas)
+ObjectPropertyRange(:P.Profesor :Profesores)
+
+# Object Property: :Profesor.P (:Profesor.P)
+
+ObjectPropertyDomain(:Profesor.P :Profesores)
+ObjectPropertyRange(:Profesor.P :Asignaturas)
+
+
+############################
+#   Data Properties
+############################
+
+# Data Property: :Correo (:Correo)
+
+DataPropertyDomain(:Correo :Profesores)
+DataPropertyRange(:Correo xsd:string)
+
+# Data Property: :DNI (:DNI)
+
+DataPropertyDomain(:DNI :Alumnos)
+DataPropertyDomain(:DNI :Profesores)
+DataPropertyRange(:DNI xsd:string)
+
+# Data Property: :Nombre (:Nombre)
+
+DataPropertyDomain(:Nombre :Alumnos)
+DataPropertyDomain(:Nombre :AlumnosAsig)
+DataPropertyDomain(:Nombre :Asignaturas)
+DataPropertyDomain(:Nombre :CursoAsig)
+DataPropertyDomain(:Nombre :ProfAsig)
+DataPropertyDomain(:Nombre :Profesores)
+DataPropertyRange(:Nombre xsd:string)
+
+# Data Property: :Referencia (:Referencia)
+
+DataPropertyDomain(:Referencia :AlumnosAsig)
+DataPropertyDomain(:Referencia :Asignaturas)
+DataPropertyDomain(:Referencia :CursoAsig)
+DataPropertyDomain(:Referencia :ProfAsig)
+DataPropertyRange(:Referencia xsd:string)
+
+# Data Property: <http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#1_Cuatri> (<http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#1_Cuatri>)
+
+DataPropertyDomain(<http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#1_Cuatri> :CursoAsig)
+DataPropertyDomain(<http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#1_Cuatri> :Cursos)
+DataPropertyRange(<http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#1_Cuatri> xsd:boolean)
+
+# Data Property: <http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#2_Cuatri> (<http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#2_Cuatri>)
+
+DataPropertyDomain(<http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#2_Cuatri> :CursoAsig)
+DataPropertyDomain(<http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#2_Cuatri> :Cursos)
+DataPropertyRange(<http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#2_Cuatri> xsd:boolean)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: :AlumnosAsig (:AlumnosAsig)
+
+SubClassOf(:AlumnosAsig :Asignaturas)
+
+# Class: :CursoAsig (:CursoAsig)
+
+SubClassOf(:CursoAsig :Asignaturas)
+
+# Class: :ProfAsig (:ProfAsig)
+
+SubClassOf(:ProfAsig :Asignaturas)
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :Alum1 (:Alum1)
+
+ClassAssertion(:Alumnos :Alum1)
+DataPropertyAssertion(:DNI :Alum1 "32157445H"^^xsd:string)
+DataPropertyAssertion(:Nombre :Alum1 "Angel Perez"^^xsd:string)
+
+# Individual: :Alum2 (:Alum2)
+
+ClassAssertion(:Alumnos :Alum2)
+DataPropertyAssertion(:DNI :Alum2 "96423412F"^^xsd:string)
+DataPropertyAssertion(:Nombre :Alum2 "Victor Marruecos"^^xsd:string)
+
+# Individual: :Asig1 (:Asig1)
+
+ClassAssertion(:Asignaturas :Asig1)
+ObjectPropertyAssertion(:P.Alumnos :Asig1 :Alum1)
+ObjectPropertyAssertion(:P.Curso :Asig1 :Curso2)
+ObjectPropertyAssertion(:P.Profesor :Asig1 :Prof1)
+DataPropertyAssertion(:Nombre :Asig1 "IC"^^xsd:string)
+DataPropertyAssertion(:Referencia :Asig1 "IC"^^xsd:string)
+
+# Individual: :Asig2 (:Asig2)
+
+ClassAssertion(:Asignaturas :Asig2)
+ObjectPropertyAssertion(:P.Alumnos :Asig2 :Alum1)
+ObjectPropertyAssertion(:P.Alumnos :Asig2 :Alum2)
+ObjectPropertyAssertion(:P.Curso :Asig2 :Curso1)
+ObjectPropertyAssertion(:P.Profesor :Asig2 :Prof2)
+DataPropertyAssertion(:Nombre :Asig2 "CA"^^xsd:string)
+DataPropertyAssertion(:Referencia :Asig2 "CA12"^^xsd:string)
+
+# Individual: :Curso1 (:Curso1)
+
+ClassAssertion(:Cursos :Curso1)
+DataPropertyAssertion(<http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#1_Cuatri> :Curso1 "true"^^xsd:boolean)
+DataPropertyAssertion(<http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#2_Cuatri> :Curso1 "false"^^xsd:boolean)
+
+# Individual: :Curso2 (:Curso2)
+
+ClassAssertion(:Cursos :Curso2)
+DataPropertyAssertion(<http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#1_Cuatri> :Curso2 "false"^^xsd:boolean)
+DataPropertyAssertion(<http://www.semanticweb.org/angel/ontologies/2021/5/untitled-ontology-2#2_Cuatri> :Curso2 "true"^^xsd:boolean)
+
+# Individual: :Prof1 (:Prof1)
+
+ClassAssertion(:Profesores :Prof1)
+DataPropertyAssertion(:DNI :Prof1 "65432345X"^^xsd:string)
+DataPropertyAssertion(:DNI :Prof1 "pepebotijo@correo"^^xsd:string)
+DataPropertyAssertion(:Nombre :Prof1 "Pepe Botijo"^^xsd:string)
+
+# Individual: :Prof2 (:Prof2)
+
+DataPropertyAssertion(:Correo :Prof2 "mariad@correo"^^xsd:string)
+DataPropertyAssertion(:DNI :Prof2 "75678245Y"^^xsd:string)
+DataPropertyAssertion(:Nombre :Prof2 "Maria Dueñas"^^xsd:string)
+
+
+)

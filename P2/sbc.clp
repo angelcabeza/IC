@@ -873,11 +873,11 @@
 ;;Regla que te dice qué regla te aconsejo el motivo y quién te lo aconseja
 (defrule mostrarRamaAconsejada
 	(declare (salience 9990))
-	(not (ya_aconsejado))
+	(modulo rama)
+	(ya_aconsejado)
 	(consejo ?rama ?motivo ?apodo)
 	=>
 	(printout t "El experto " ?apodo " te aconseja escoger la rama " ?rama " ya que " ?motivo crlf)
-	(assert (ya_aconsejado))
 )
 
 ;; PARTE B DE LA PRÁCTICA
@@ -923,6 +923,8 @@
 	)
 )
 
+;;;;; Solicitamos el nombre de la primera persona 
+
 (defrule preguntaAsignatura1
 	(declare (salience 9998))
 	(modulo asignatura)
@@ -934,7 +936,7 @@
    
 )
    
-   ;;;;; Solicitamos el nombre de la segunda persona 
+;;;;; Solicitamos el nombre de la segunda persona 
  
 (defrule preguntaAsignatura2
 	(declare (salience 9998))
@@ -948,6 +950,10 @@
    (assert (modulo recomendar_defecto))
 )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; REGLA PARA COMPROBAR QUE LA ASIGNATURA 2 ESTÁ EN LA LISTA QUE HEMOS DADO
 (defrule comprobarAsignatura1
 	(declare (salience 9999))
 	(modulo preguntar_asignaturas)
@@ -985,6 +991,10 @@
 
 )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; REGLA PARA COMPROBAR QUE LA ASIGNATURA 2 ESTÁ EN LA LISTA QUE HEMOS DADO
 (defrule comprobarAsignatura2
 	(declare (salience 9999))
 	(modulo preguntar_asignaturas)
@@ -1023,6 +1033,7 @@
 
 )
 
+; BLOQUE DE REGLAS PARA DEDUCIR LA RECOMENDACION POR DEFECTO
 (defrule recomendarDefectoBasicasAsig1
 	(declare (salience 9999))
 	(modulo asignatura)
@@ -1105,7 +1116,11 @@
 	(assert (recomendar ?asig1 ?recomendacion por_defecto)
 	(modulo preguntas_usuario))
 )
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+;; ESTA REGLA SIRVE PARA CAMBIAR DEL MÓDULO PREGUNTAS DE USUARIO
+;; AL MÓDULO DE ENSEÑAR LAS RECOMENDACIONES
 (defrule cambiarModuloMostrarRecomendaciones
 	(declare (salience 9998))
 	(modulo asignatura)
@@ -1120,7 +1135,9 @@
 		(modulo mostrar_recomendaciones)	
 	)
 )
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; REGLAS PARA MOSTRAR LAS RECOMENDACIONES QUE HE INFERIDO
 (defrule mostrarRecomendacionesDefecto
 	(declare (salience 9999))
 	(modulo asignatura)
@@ -1141,7 +1158,9 @@
 	(printout t " Te recomiendo la asignatura " ?asig1 " " ?recomendacion " Esta recomendacion la he hecho por las preguntas" crlf)
 	(retract ?x)
 )
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; REGLAS PARA INFERIR LA RECOMENDACIÓN SEGÚN LAS CONTESTACIONES DE LAS PREGUNTAS
 (defrule recomendarMatematicasAsig1
 	(declare (salience 9999))
 	(modulo asignatura)
@@ -1576,3 +1595,4 @@
 		(ya_aconsejado)
 	)
 )
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
